@@ -10,3 +10,6 @@ def itiview(request):
     print(request)
     #
     return HttpResponse("<h1 style='color:red'>iti</h1>")
+
+def home(request):
+    return HttpResponse("<h1 style='color:green'>Home</h1>")
