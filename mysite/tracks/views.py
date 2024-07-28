@@ -5,3 +5,7 @@ from django.http import HttpResponse
 
 def tracks_view(request):
     return HttpResponse("<h1 style='color:red; text-align:center'>Tracks Home </h1>")
+
+
+def tracks_home(request):
+    return render(request, 'tracks/list.html')

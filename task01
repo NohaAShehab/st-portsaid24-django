@@ -1,0 +1,13 @@
+
+1- install django
+2- create project bookstore
+3- create 2 different apps books, authors
+4- create 3 pages
+    home .. contactus .. aboutus
+    home --> display all books , 10 books into table
+    [{id, name, no_of_pages, cover, author , price}]
+
+    contact us and about us --> any content
+
+5- create another page --? book/5
+    display only details book with id = 5
