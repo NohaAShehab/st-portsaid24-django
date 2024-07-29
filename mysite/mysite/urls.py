@@ -25,6 +25,6 @@ urlpatterns = [
     # path('tracks', tracks_view),
     path("students/", include("students.urls")),
     path("tracks/",include("tracks.urls")),
-    path('', landing),
+    # path('', landing),
 
 ]

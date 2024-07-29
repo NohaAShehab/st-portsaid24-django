@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">ITI project</a>
+  <a class="navbar-brand" href="{% url 'std_list'%}">ITI project</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,32 +26,18 @@
   </div>
 </nav>
 <div class="container">
-        <h1> All Students </h1>
-<h3 style="color: darkred"> Hiiii</h3>
+        <h1> Student profile </h1>
+        <h3> Student info </h3>
+        <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{student.name}}</h5>
+    <p class="card-text">track: {{student.track}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 
-    {{students}}
 
-
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Track</th>
-            <th>Image</th>
-            <td>Show</td>
-
-        </tr>
-        {% for std in students %}
-            <tr>
-                <td>{{std.id}}</td>
-                <td>{{std.name}}</td>
-                <td>{{std.track}}</td>
-                <td>{{std.image}}</td>
-                <td><a href="{% url 'std_profile' std.id %}" class="btn btn-info">Show</a></td>
-            </tr>
-        {% endfor %}
-
-    </table>
 
 </div>
 

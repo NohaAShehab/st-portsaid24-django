@@ -10,7 +10,7 @@ urlpatterns = [
     path('home', home),
     path('profile/<username>', profile),
     path('stds', all_students),
-    path('stds/<int:id>',std_profile),
-    path('list', std_list)
+    path('stds/<int:id>',std_profile,name='std_profile'),
+    path('ss', std_list, name='std_list'),
 ]
 

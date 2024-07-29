@@ -36,7 +36,9 @@ def std_profile(request, id):
     print(type(id))
     for std in students:
         if std['id'] == id :
-            return HttpResponse(std.values())
+            # return HttpResponse(std.values())
+            return render(request, 'students/show.html',
+                          context={"student":std})
     else:
         return HttpResponse("Student not found.")
 
@@ -50,3 +52,10 @@ def std_list(request):
 
 def landing(request):
     return HttpResponse("<h1 style='color:green'>landing</h1>")
+
+
+
+# click std --> show its info --> redirect to page
+# with the same style
+# image --> show image
+
