@@ -11,6 +11,6 @@ urlpatterns = [
     path('profile/<username>', profile),
     path('stds', all_students),
     path('stds/<int:id>',std_profile,name='std_profile'),
-    path('ss', std_list, name='std_list'),
+    path('', std_list, name='std_list'),
 ]
 
