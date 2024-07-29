@@ -58,4 +58,6 @@ def landing(request):
 # click std --> show its info --> redirect to page
 # with the same style
 # image --> show image
+# after adding static folder to the project
+# you must restart the server
 

@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
 {%block title%}All students {% endblock%}
 
 {% block body %} <h1> ITI</h1> {% endblock %}
@@ -23,7 +24,10 @@
                 <td>{{std.id}}</td>
                 <td>{{std.name}}</td>
                 <td>{{std.track}}</td>
-                <td>{{std.image}}</td>
+<!--                <td><img width="200" height="200" src="{% static 'students/images/'%}{{std.image}}"> </td>-->
+            <td><img width="200" height="200"
+             src="{% static 'students/images/'|add:std.image %}"> </td>
+
                 <td><a href="{% url 'std_profile' std.id %}" class="btn btn-info">Show</a></td>
             </tr>
         {% endfor %}
