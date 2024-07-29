@@ -1,0 +1,17 @@
+1- connect your project with postgres
+2- run migrations
+    python manage.py migrate
+3- create superuser for admin dashboard
+    python manage.py createsuperuser
+
+4- use model to create Book model class
+[{id, name, no_of_pages, cover, author , price}]
+
+5- use admin dashboard to insert 5 books
+
+6- display all books from database into a table  (show, delete)
+besided each book
+7- make sure to use static files to display images from them
+8- implement functionality of show
+9- implement functionality of delete
+10 - You must use url names,template inheritance

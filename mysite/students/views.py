@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, redirect
 from django.http import HttpResponse
 # Create your views here.
+from students.models import Student
 
 # functions
 # handle http request?
@@ -61,3 +62,31 @@ def landing(request):
 # after adding static folder to the project
 # you must restart the server
 
+
+
+# get all students from databases
+# use models
+def index(request):
+    #1- get objects from database
+    students = Student.objects.all()
+    print(students)
+    # return with templates
+    return  render(request, 'students/index.html',
+                   context={'students': students})
+
+
+def show(request, id ):
+    # get one object from db
+    student = Student.objects.get(id=id)
+    return render(request, 'students/show.html',
+                  context={'student': student})
+
+
+def delete(request, id):
+    student = Student.objects.get(id=id)
+    student.delete()  # delete object from table
+    # return HttpResponse("<h1 style='color:green'>Deleted</h1>")
+    # redirect to index page
+    url = reverse('students.index') # covert url name to url
+    print('delete',url)
+    return redirect(url)

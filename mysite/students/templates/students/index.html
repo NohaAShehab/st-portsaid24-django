@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{%block title%}All students {% endblock%}
+
+{% block body %} <h1> ITI</h1> {% endblock %}
+{% block content %}
+<h1> All Students from database </h1>
+
+    {{students}}
+
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Track</th>
+            <th>Image</th>
+            <td>Show</td>
+            <td>Delete</td>
+
+        </tr>
+        {% for std in students %}
+            <tr>
+                <td>{{std.id}}</td>
+                <td>{{std.name}}</td>
+                <td>{{std.track}}</td>
+            <td><img width="200" height="200"
+             src="{% static 'students/images/'|add:std.image %}"> </td>
+
+                <td><a href="{% url 'students.show' std.id %}" class="btn btn-info">Show</a></td>
+            <td><a href="{% url 'students.delete' std.id %}" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
