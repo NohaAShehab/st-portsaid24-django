@@ -12,3 +12,21 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
     b- serving the media files
     # generate url ??
+
+
+    ##################3
+ saving the objects
+ https://docs.djangoproject.com/en/5.0/ref/csrf/
+
+
+
+
+
+
+
+
+
+
+
+
+

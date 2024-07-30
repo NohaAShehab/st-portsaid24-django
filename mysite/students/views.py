@@ -85,8 +85,45 @@ def show(request, id ):
 def delete(request, id):
     student = Student.objects.get(id=id)
     student.delete()  # delete object from table
-    # return HttpResponse("<h1 style='color:green'>Deleted</h1>")
-    # redirect to index page
     url = reverse('students.index') # covert url name to url
-    print('delete',url)
     return redirect(url)
+
+
+
+def create(request):
+    print(f"request here {request}")
+    if request.method == 'POST':
+        print(request.POST) # contains data sent with the post request
+        print(f"name= {request.POST['name']}")
+        print(request.FILES)
+        # to create object
+        std = Student()
+        std.name =request.POST['name']
+        std.grade = request.POST['grade']
+        std.email= request.POST['email']
+        std.track= request.POST['track']
+        std.image = request.FILES['image']
+        std.save()
+        # url = reverse('students.index')  # covert url name to url
+        # return redirect(url)
+        return redirect(std.show_url)
+
+
+
+
+        return HttpResponse("<h1 style='color:green'>Post request received </h1>")
+    return render(request, 'students/create.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
