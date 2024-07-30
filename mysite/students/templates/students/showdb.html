@@ -3,15 +3,20 @@
 {% block title %} Student profile {%endblock %}
 {% block main %}
         <h1> Student profile </h1>
-        <h3> Student info </h3>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 32rem;">
   <img class="card-img-top" src="{{student.image_url}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{student.name}}</h5>
-    <p class="card-text">track: {{student.track}}</p>
+    <p class="card-text"><a href="{{student.track.show_url}}"> track: {{student.track}} </a></p>
       <p> {{student.track.description}}</p>
     <a href="{% url 'students.index'%}" class="btn btn-primary">back to all students</a>
   </div>
 </div>
+<h1> See also students in this track </h1>
+    {% for std in student.track.students.all %}
+        {% if std.id != student.id %}
+                <li><a href="{{std.show_url}}">{{std}}</a></li>
+        {% endif %}
+    {% endfor %}
 {%endblock %}
 

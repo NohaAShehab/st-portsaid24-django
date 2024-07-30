@@ -6,12 +6,14 @@
 <!--  {{tracks}}-->
 
   <table class="table">
-    <tr> <th>ID</th> <th>Name</th> <th>Description</th></tr>
+    <tr> <th>ID</th> <th>Name</th> <th>Description</th>
+    <th> Show</th></tr>
     {% for track in tracks %}
       <tr>
         <td>{{track.id}}</td>
         <td>{{track.name}}</td>
         <td>{{track.description}}</td>
+        <td><a href="{{track.show_url}}" class="btn btn-primary"> Show</a></td>
       </tr>
     {% endfor %}
   </table>

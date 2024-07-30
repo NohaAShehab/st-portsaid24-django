@@ -1,0 +1,19 @@
+
+1- create model for author
+    --> id , name, image, bdate, created_at, updated at
+
+2- add author to admin panel then create 7 authors
+
+3- modify the book model to have an author (one book has one author , author has many books)
+4- modify book model to make cover to be imagefield that can be uploaded to the server
+4- implement adding new book
+5- implement editing book
+6- when click on show book
+    it displays book full info and the names of the books were written by the same author
+
+hint don't forget to install pillow package and django-cleanup
+
+
+break till 12:30
+lab until 3:30
+

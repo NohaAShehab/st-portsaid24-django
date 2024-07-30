@@ -15,7 +15,9 @@ class Student(models.Model):
                               null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
-    track = models.ForeignKey(Track, on_delete=models.SET_NULL, null=True, blank=True)
+    track = models.ForeignKey(Track, on_delete=models.SET_NULL,
+                              related_name='students',
+                              null=True, blank=True)
     # track represents the track object not only the id ??
 
     def __str__(self):
