@@ -26,7 +26,10 @@ class Student(models.Model):
         url = reverse('students.show', args=[self.id])
         return url
 
-
+    @property
+    def edit_url(self):
+        url = reverse('students.edit', args=[self.id])
+        return url
 
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse
 # Create your views here.
 from students.models import Student
@@ -77,7 +77,8 @@ def index(request):
 
 def show(request, id ):
     # get one object from db
-    student = Student.objects.get(id=id)
+    # student = Student.objects.get(id=id)
+    student = get_object_or_404(Student, id=id)
     return render(request, 'students/showdb.html',
                   context={'student': student})
 
@@ -113,6 +114,21 @@ def create(request):
 
         return HttpResponse("<h1 style='color:green'>Post request received </h1>")
     return render(request, 'students/create.html')
+
+
+
+
+def edit(request, id):
+    # get object from db ?
+    student = get_object_or_404(Student, id=id)
+    if request.method == 'POST':
+        # get data , update object ??
+        student.name = request.POST['name']
+        pass
+
+    return render(request, 'students/edit.html',
+                  context={'student': student})
+
 
 
 

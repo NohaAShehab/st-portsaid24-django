@@ -15,6 +15,7 @@
             <th>Track</th>
             <th>Image</th>
             <td>Show</td>
+            <td> Edit </td>
             <td>Delete</td>
 
         </tr>
@@ -29,6 +30,8 @@
              src="{{std.image_url}}"> </td>
 
                 <td><a href="{{std.show_url}}" class="btn btn-info">Show</a></td>
+                <td><a href="{{std.edit_url}}" class="btn btn-warning">Edit</a></td>
+
             <td><a href="{% url 'students.delete' std.id %}" class="btn btn-danger">Delete</a></td>
 
             </tr>

@@ -19,6 +19,8 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
  https://docs.djangoproject.com/en/5.0/ref/csrf/
 
 
+## automatically remove images related
+## to objects when the object delete
 
 
 
