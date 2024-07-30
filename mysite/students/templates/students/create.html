@@ -10,7 +10,12 @@
   </div>
      <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">track</label>
-    <input type="text" name="track" class="form-control"  aria-describedby="">
+         <select class="form-select" name="track" aria-label="Default select example">
+  <option selected disabled>Open this select track</option>
+             {% for track in tracks %}
+    <option value="{{track.id}}">{{track}}</option>
+             {% endfor %}
+</select>
   </div>
 
   <div class="mb-3">

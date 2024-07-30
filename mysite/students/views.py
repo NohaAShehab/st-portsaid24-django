@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse
 # Create your views here.
 from students.models import Student
+from tracks.models import Track
 
 # functions
 # handle http request?
@@ -93,6 +94,7 @@ def delete(request, id):
 
 def create(request):
     print(f"request here {request}")
+    tracks= Track.objects.all()
     if request.method == 'POST':
         print(request.POST) # contains data sent with the post request
         print(f"name= {request.POST['name']}")
@@ -102,18 +104,20 @@ def create(request):
         std.name =request.POST['name']
         std.grade = request.POST['grade']
         std.email= request.POST['email']
-        std.track= request.POST['track']
-        std.image = request.FILES['image']
+        if 'track' in request.POST:
+            track = Track.objects.filter(id=request.POST['track']).first() # return queryset
+            if(track):
+                std.track=track
+
+        if 'image' in request.FILES:
+            std.image = request.FILES['image']
         std.save()
         # url = reverse('students.index')  # covert url name to url
         # return redirect(url)
         return redirect(std.show_url)
 
-
-
-
-        return HttpResponse("<h1 style='color:green'>Post request received </h1>")
-    return render(request, 'students/create.html')
+    return render(request, 'students/create.html',
+                context={"tracks":tracks}  )
 
 
 

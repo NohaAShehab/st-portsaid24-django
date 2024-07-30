@@ -9,6 +9,7 @@
   <div class="card-body">
     <h5 class="card-title">{{student.name}}</h5>
     <p class="card-text">track: {{student.track}}</p>
+      <p> {{student.track.description}}</p>
     <a href="{% url 'students.index'%}" class="btn btn-primary">back to all students</a>
   </div>
 </div>
