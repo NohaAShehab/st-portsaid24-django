@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{%block title%}All Tracks {% endblock%}
+
+{% block content %}
+<!--  {{tracks}}-->
+
+  <table class="table">
+    <tr> <th>ID</th> <th>Name</th> <th>Description</th></tr>
+    {% for track in tracks %}
+      <tr>
+        <td>{{track.id}}</td>
+        <td>{{track.name}}</td>
+        <td>{{track.description}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock%}

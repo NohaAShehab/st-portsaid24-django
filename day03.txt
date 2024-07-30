@@ -22,7 +22,19 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 ## automatically remove images related
 ## to objects when the object delete
 
+https://pypi.org/project/django-cleanup/
 
+#################################333
+
+create model , tracks
+
+connect track with student -->
+relation one to many relationship
+
+
+
+
+# add track to student model
 
 
 

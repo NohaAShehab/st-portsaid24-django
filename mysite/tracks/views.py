@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from tracks.models import Track
 # Create your views here.
 
 def tracks_view(request):
@@ -9,3 +9,9 @@ def tracks_view(request):
 
 def tracks_home(request):
     return render(request, 'tracks/list.html')
+
+
+def index(request):
+    tracks = Track.objects.all()
+    return render(request, 'tracks/index.html',
+                  context={'tracks': tracks})
