@@ -1,0 +1,14 @@
+1- upload image
+    using pillow package
+    a- prepare folder where we can save uploaded image
+    go to the project directory
+    in settings.py
+
+    MEDIA_URL='/media/'
+# where is the media folder located
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+
+
+    b- serving the media files
+    # generate url ??

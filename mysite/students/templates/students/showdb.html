@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %} Student profile {%endblock %}
+{% block main %}
+        <h1> Student profile </h1>
+        <h3> Student info </h3>
+        <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{student.image_url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{student.name}}</h5>
+    <p class="card-text">track: {{student.track}}</p>
+    <a href="{% url 'students.index'%}" class="btn btn-primary">back to all students</a>
+  </div>
+</div>
+{%endblock %}
+

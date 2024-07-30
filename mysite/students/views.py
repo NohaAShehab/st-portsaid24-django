@@ -78,7 +78,7 @@ def index(request):
 def show(request, id ):
     # get one object from db
     student = Student.objects.get(id=id)
-    return render(request, 'students/show.html',
+    return render(request, 'students/showdb.html',
                   context={'student': student})
 
 
