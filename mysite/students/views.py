@@ -102,7 +102,10 @@ def create(request):
         # to create object
         std = Student()
         std.name =request.POST['name']
-        std.grade = request.POST['grade']
+
+        if request.POST['grade'] !='':
+            std.grade = request.POST['grade']
+
         std.email= request.POST['email']
         if 'track' in request.POST:
             track = Track.objects.filter(id=request.POST['track']).first() # return queryset
