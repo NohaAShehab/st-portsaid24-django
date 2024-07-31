@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 from students.models import Student
 from tracks.models import Track
-from students.forms import StudentForm
+from students.forms import StudentForm, StudentModelForm
 
 # functions
 # handle http request?
@@ -157,19 +157,11 @@ def create_via_form(request):
         if myform.is_valid():
             print("POST data", request.POST, request.FILES)
             print("cleaned data ", myform.cleaned_data)
-            # if 'image' in request.FILES:
-            #     img = request.FILES['image']
-            # else:
-            #     img = None
-            #
-            # grade = 0
-            # if request.POST['grade'] !='':
-            #     grade = request.POST['grade']
-
             # using cleaned data convert empty values to None
             student= Student.objects.create(name=myform.cleaned_data['name'],
             email=myform.cleaned_data['email'],grade=myform.cleaned_data['grade']
-                                            ,image=myform.cleaned_data['image'])
+                                            ,image=myform.cleaned_data['image'],
+                                            track= myform.cleaned_data['track'])
 
             student.save()
             return redirect(student.show_url)
@@ -177,6 +169,7 @@ def create_via_form(request):
 
     return  render(request, 'students/forms/create.html',
                    context={'form':myform})
+
 
 
 

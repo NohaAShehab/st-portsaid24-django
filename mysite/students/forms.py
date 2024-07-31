@@ -1,5 +1,6 @@
 from django import forms
 from students.models import Student
+from tracks.models import Track
 
 
 class StudentForm(forms.Form):
@@ -7,6 +8,9 @@ class StudentForm(forms.Form):
     email = forms.EmailField(label='Email', required=False)
     grade = forms.IntegerField(label='Grade', required=False)
     image = forms.ImageField(label='Image', required=False)
+    # track = forms.ChoiceField(label='Track', required=False, choices={
+    #     "1":'iti',  "2":"python"   })
+    track = forms.ModelChoiceField(queryset=Track.objects.all(), required=False)
 
     # check if email exists before ??? then data not valid ??
     def clean_email(self):
@@ -33,3 +37,5 @@ class StudentForm(forms.Form):
                 raise forms.ValidationError('Grade must be between 0 and 100')
             else:
                 return grade
+
+
