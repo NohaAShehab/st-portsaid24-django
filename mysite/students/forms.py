@@ -39,3 +39,22 @@ class StudentForm(forms.Form):
                 return grade
 
 
+class StudentModelForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = '__all__'
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) < 3:
+            raise forms.ValidationError('Name must be at least 3 characters')
+        else:
+            return name
+
+    def clean_grade(self):
+        grade = self.cleaned_data['grade']
+        if grade:
+            if grade > 100 or grade < 0:
+                raise forms.ValidationError('Grade must be between 0 and 100')
+            else:
+                return grade

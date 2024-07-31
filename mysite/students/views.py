@@ -132,16 +132,16 @@ def create(request):
 
 
 
-def edit(request, id):
-    # get object from db ?
-    student = get_object_or_404(Student, id=id)
-    if request.method == 'POST':
-        # get data , update object ??
-        student.name = request.POST['name']
-        pass
-
-    return render(request, 'students/edit.html',
-                  context={'student': student})
+# def edit(request, id):
+#     # get object from db ?
+#     student = get_object_or_404(Student, id=id)
+#     if request.method == 'POST':
+#         # get data , update object ??
+#         student.name = request.POST['name']
+#         pass
+#
+#     return render(request, 'students/edit.html',
+#                   context={'student': student})
 
 
 
@@ -155,14 +155,10 @@ def create_via_form(request):
         # form ---> apply is valid ??
         myform = StudentForm(request.POST, request.FILES)
         if myform.is_valid():
-            print("POST data", request.POST, request.FILES)
-            print("cleaned data ", myform.cleaned_data)
-            # using cleaned data convert empty values to None
             student= Student.objects.create(name=myform.cleaned_data['name'],
             email=myform.cleaned_data['email'],grade=myform.cleaned_data['grade']
                                             ,image=myform.cleaned_data['image'],
                                             track= myform.cleaned_data['track'])
-
             student.save()
             return redirect(student.show_url)
 
@@ -172,9 +168,31 @@ def create_via_form(request):
 
 
 
+def create_via_model_form(request):
+    form  =StudentModelForm()
+    if request.method=='POST':
+        form = StudentModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            # create new object
+            student = form.save()
+            return redirect(student.show_url)
+
+    return render(request, 'students/forms/createmodel.html',
+                  context={'form':form})
 
 
 
 
+def edit(request, id):
+    student = get_object_or_404(Student, id=id)
+    form = StudentModelForm(instance=student) #populate form with student data
+    if request.method == 'POST':
+        form = StudentModelForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect(student.show_url)
+
+    return render(request, 'students/forms/edit.html',
+                  context={ 'form':form})
 
 

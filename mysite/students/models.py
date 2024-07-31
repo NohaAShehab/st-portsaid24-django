@@ -6,8 +6,6 @@ from tracks.models import Track
 class Student(models.Model):
 
     name =models.CharField(max_length=100)
-    # image= models.CharField(max_length=100, null=True)
-    # track = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True, unique=True)
     grade = models.IntegerField(default=0, null=True, blank=True)
     # upload images
