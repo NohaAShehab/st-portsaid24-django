@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{%block title%}Add Track {% endblock%}
+
+{% block content %}
+
+    <h1>Delete using generic views  </h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Are you want to delete this track  {{object}}</p>
+
+    <input type="submit" class="btn btn-danger" value="Delete">
+</form>
+    <a href="{% url 'tracks.index'%}" class="btn btn-dark"> Cancel</a>
+<script src="{% static 'students/js/script.js'%}">
+
+</script>
+{% endblock%}

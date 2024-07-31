@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{%block title%}Add Track {% endblock%}
+
+{% block content %}
+
+    <h1>Add Track  </h1>
+    {{object}}
+
+    <img src="{{object.image_url}}" width="200" height="200">
+    {{mytrack}}
+
+
+<script src="{% static 'students/js/script.js'%}">
+
+</script>
+{% endblock%}

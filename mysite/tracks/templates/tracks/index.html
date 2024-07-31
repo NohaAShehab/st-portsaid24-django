@@ -4,16 +4,24 @@
 
 {% block content %}
 <!--  {{tracks}}-->
+<a href="{% url 'tracks.create' %}" class="btn btn-info"> Create Track </a>
+
+<a href="{% url 'tracks.create_generic' %}" class="btn btn-danger"> Create Track using generic</a>
+
 
   <table class="table">
     <tr> <th>ID</th> <th>Name</th> <th>Description</th>
-    <th> Show</th></tr>
+    <th> Show</th> <th> Edit </th> <th>Delete</th></tr>
     {% for track in tracks %}
       <tr>
         <td>{{track.id}}</td>
         <td>{{track.name}}</td>
         <td>{{track.description}}</td>
         <td><a href="{{track.show_url}}" class="btn btn-primary"> Show</a></td>
+        <td><a href="{{track.edit_url}}" class="btn btn-warning"> Edit</a></td>
+        <td><a href="{{track.delete_url}}" class="btn btn-danger"> Delete </a></td>
+        <td><a href="{% url 'tracks.detail' track.id %}" class="btn btn-dark"> Detail </a></td>
+
       </tr>
     {% endfor %}
   </table>
