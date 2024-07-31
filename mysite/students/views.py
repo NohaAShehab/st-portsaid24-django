@@ -3,6 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 from students.models import Student
 from tracks.models import Track
+from students.forms import StudentForm
 
 # functions
 # handle http request?
@@ -96,6 +97,12 @@ def create(request):
     print(f"request here {request}")
     tracks= Track.objects.all()
     if request.method == 'POST':
+
+        # validate data ??
+        # check if name not empty string
+        # check if email ?? not exists in db ??
+        ## check if image is valid image
+
         print(request.POST) # contains data sent with the post request
         print(f"name= {request.POST['name']}")
         print(request.FILES)
@@ -141,7 +148,35 @@ def edit(request, id):
 
 
 
+def create_via_form(request):
+    myform= StudentForm()
+    if request.method == 'POST':
+        print(request.POST, request.FILES)
+        # form ---> apply is valid ??
+        myform = StudentForm(request.POST, request.FILES)
+        if myform.is_valid():
+            print("POST data", request.POST, request.FILES)
+            print("cleaned data ", myform.cleaned_data)
+            # if 'image' in request.FILES:
+            #     img = request.FILES['image']
+            # else:
+            #     img = None
+            #
+            # grade = 0
+            # if request.POST['grade'] !='':
+            #     grade = request.POST['grade']
 
+            # using cleaned data convert empty values to None
+            student= Student.objects.create(name=myform.cleaned_data['name'],
+            email=myform.cleaned_data['email'],grade=myform.cleaned_data['grade']
+                                            ,image=myform.cleaned_data['image'])
+
+            student.save()
+            return redirect(student.show_url)
+
+
+    return  render(request, 'students/forms/create.html',
+                   context={'form':myform})
 
 
 

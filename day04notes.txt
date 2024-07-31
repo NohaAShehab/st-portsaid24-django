@@ -1,0 +1,6 @@
+
+1- using django forms ??
+
+django provide ways of creating html form using python
+https://docs.djangoproject.com/en/5.0/topics/forms/
+

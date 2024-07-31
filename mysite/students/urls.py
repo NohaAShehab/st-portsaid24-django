@@ -4,7 +4,8 @@
 from django.urls import path
 from students.views import itiview
 from students.views import (home, profile,
-    all_students, std_profile, std_list, index, show, delete, create,edit )
+    all_students, std_profile, std_list, index, show, delete, create,
+                            edit, create_via_form )
 urlpatterns = [
     path('iti', itiview),
     path('home', home),
@@ -17,5 +18,6 @@ urlpatterns = [
     path('<int:id>/delete', delete, name='students.delete'),
     path('create', create, name='students.create'),
     path('<int:id>/edit', edit, name='students.edit'),
+    path('forms/create',create_via_form, name='students.forms' )
 ]
 
